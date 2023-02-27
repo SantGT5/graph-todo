@@ -9,12 +9,12 @@ mongoose.connection.once('open', () => {
     console.log('🪐 MongoDB connection ready!');
 });
 
+mongoose.connection.on('error', (err) => {
+    console.error(err);
+});
+
 async function mongoConnect() {
-    try {
-        await connect(MONGO_URL);
-    } catch (err) {
-        console.error(err);
-    }
+    await connect(MONGO_URL);
 }
 
 async function mongoDisconnect() {
