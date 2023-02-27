@@ -1,9 +1,9 @@
-import { getBooks } from "./books.model.js";
+import { getBooks } from './books.model.js';
 
-export const bookResolvers = {
-  Query: {
-    books: () => {
-      return getBooks();
+const bookResolvers = {
+    Query: {
+        books: () => getBooks(),
     },
-  },
 };
+
+export { bookResolvers };
