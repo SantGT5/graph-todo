@@ -1,8 +1,14 @@
-type Book {
-    title: String
-    author: String
+type Note {
+    title: String!
+    text: String!
+    _id: ID
+    done: Boolean
 }
 
 type Query {
-    books: [Book]
+    notes: [Note!]
+}
+
+type Mutation {
+    addNewNote(title: String!, text: String!, done: Boolean): Note!
 }

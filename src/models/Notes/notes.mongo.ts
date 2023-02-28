@@ -11,11 +11,12 @@ const notesSchema = new Schema<NoteType>({
     title: {
         type: String,
         required: [true, 'title is required!'],
-        min: [4, 'Min 4!'],
+        minlength: [4, 'Min 4!'],
     },
     text: {
         type: String,
         required: [true, 'text is required!'],
+        minlength: [5, 'Min 5!'],
     },
     done: {
         type: Boolean,
@@ -25,3 +26,4 @@ const notesSchema = new Schema<NoteType>({
 
 const Note = model<NoteType & Document>('Notes', notesSchema);
 export { Note };
+export type { NoteType };

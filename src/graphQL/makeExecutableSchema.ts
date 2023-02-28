@@ -8,9 +8,9 @@ import { loadFilesSync } from '@graphql-tools/load-files';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
 // resolvers
-import { bookResolvers } from './books/books.resolvers.js';
+import { noteResolvers } from './books/books.resolvers.js';
 
-const resolvers: IResolvers = mergeResolvers([bookResolvers]);
+const resolvers: IResolvers = mergeResolvers([noteResolvers]);
 
 const typeDefs: GraphQLSchema = makeExecutableSchema({
     typeDefs: loadFilesSync<TypeSource>('**/*', {

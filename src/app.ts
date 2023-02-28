@@ -30,6 +30,7 @@ async function startApolloServer(
         typeDefs,
         resolvers,
         plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+        includeStacktraceInErrorResponses: false,
     });
 
     await server.start();
