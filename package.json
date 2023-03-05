@@ -7,6 +7,7 @@
   "scripts": {
     "compile": "tsc --b --clean && tsc && node dist/server.js",
     "dev": "nodemon -w src --exec 'npm run compile' -e ts",
+    "docker:run": "docker-compose -f docker-compose.yml up --build",
     "lint:check": "eslint './src/**/*'",
     "prettier:format": "prettier --write './src/**/*'",
     "prettier:check": "prettier --check './src/**/*' --debug-check"

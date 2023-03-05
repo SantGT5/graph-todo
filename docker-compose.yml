@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+    api:
+        container_name: api
+        restart: always
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - /app/node_modules
+            - ./:/app
+        ports:
+            - 4000:4000
+        depends_on:
+            - mongo
+            - mongo-express
+        networks:
+            - todo-app
+
+    mongo:
+        image: mongo:latest
+        container_name: mongo
+        restart: always
+        ports:
+            - 27017:27017
+        networks:
+            - todo-app
+        volumes:
+            - mongo-data:/data/db
+        command: mongod --quiet --logpath /dev/null
+
+    mongo-express:
+        image: mongo-express:latest
+        container_name: mongo-express
+        restart: always
+        ports:
+            - 8081:8081
+        depends_on:
+            - mongo
+        networks:
+            - todo-app
+
+networks:
+    todo-app:
+        driver: bridge
+volumes:
+    mongo-data:
+        driver: local
