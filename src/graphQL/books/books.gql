@@ -6,9 +6,10 @@ type Note {
 }
 
 type Query {
-    notes: [Note!]
+    getAllNotes: [Note]!
 }
 
 type Mutation {
     addNewNote(title: String!, text: String!, done: Boolean): Note!
+    deleteNote(id: ID!): Note
 }
