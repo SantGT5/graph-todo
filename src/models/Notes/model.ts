@@ -1,4 +1,4 @@
-import { Note } from './notes.mongo.js';
+import { Note } from './schema.js';
 
 type createNewNoteType = {
     title: string;
@@ -22,4 +22,13 @@ async function deleteNote(id: string) {
     return Note.deleteOne({ _id: id });
 }
 
-export { dbGetAllNotes, createNewNote, deleteNote };
+async function getNoteByQuery(query: string) {
+    if (!query.trim().length) return [];
+
+    return await Note.find(
+        { title: { $regex: `${query.trim()}`, $options: 'i' } },
+        { __v: 0 }
+    );
+}
+
+export { dbGetAllNotes, createNewNote, deleteNote, getNoteByQuery };

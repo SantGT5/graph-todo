@@ -1,11 +1,12 @@
 import { ErrorHandler } from '../ErrorHandler.js';
-import type { NoteType } from '../../models/Notes/notes.mongo.js';
+import type { NoteType } from '../../models/Notes/schema.js';
 
 import {
     createNewNote,
     dbGetAllNotes,
     deleteNote,
-} from '../../models/Notes/notes.model.js';
+    getNoteByQuery,
+} from '../../models/Notes/model.js';
 
 async function httpGetAllNotes() {
     return await dbGetAllNotes();
@@ -14,7 +15,7 @@ async function httpGetAllNotes() {
 async function httpAddNewNote({ title, text, done }: NoteType) {
     try {
         return await createNewNote({ title, text, done });
-    } catch (err: any) {
+    } catch (err) {
         ErrorHandler(err);
     }
 }
@@ -27,5 +28,13 @@ async function httpDeleteNote(id: string) {
     }
 }
 
-export { httpGetAllNotes, httpAddNewNote, httpDeleteNote };
+async function httpGetNoteByQuery(query: string) {
+    try {
+        return await getNoteByQuery(query);
+    } catch (err) {
+        ErrorHandler(err);
+    }
+}
+
+export { httpGetAllNotes, httpAddNewNote, httpDeleteNote, httpGetNoteByQuery };
 export type { NoteType };

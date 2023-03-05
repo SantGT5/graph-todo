@@ -1,13 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     httpGetAllNotes,
     httpAddNewNote,
     httpDeleteNote,
-} from './books.model.js';
-import type { NoteType } from './books.model.js';
+    httpGetNoteByQuery,
+} from './notes.model.js';
+import type { NoteType } from './notes.model.js';
 
 const noteResolvers = {
     Query: {
         getAllNotes: () => httpGetAllNotes(),
+        getNoteByQuery: (_: any, { query }: { query: string }) => {
+            return httpGetNoteByQuery(query);
+        },
     },
     Mutation: {
         addNewNote: (_: any, { title, text, done }: NoteType) => {

@@ -8,7 +8,7 @@ import { loadFilesSync } from '@graphql-tools/load-files';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
 // resolvers
-import { noteResolvers } from './books/books.resolvers.js';
+import { noteResolvers } from './notes/notes.resolvers.js';
 
 const resolvers: IResolvers = mergeResolvers([noteResolvers]);
 

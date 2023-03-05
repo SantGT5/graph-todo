@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLError } from 'graphql';
 
 function ErrorHandler(err: any) {
