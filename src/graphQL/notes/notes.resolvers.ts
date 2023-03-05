@@ -4,22 +4,30 @@ import {
     httpAddNewNote,
     httpDeleteNote,
     httpGetNoteByQuery,
+    httpUpdateNote,
 } from './notes.model.js';
-import type { NoteType } from './notes.model.js';
+
+import type { NoteType, updateNoteType } from './notes.model.js';
 
 const noteResolvers = {
     Query: {
-        getAllNotes: () => httpGetAllNotes(),
-        getNoteByQuery: (_: any, { query }: { query: string }) => {
-            return httpGetNoteByQuery(query);
+        getAllNotes: async () => await httpGetAllNotes(),
+        getNoteByQuery: async (_: any, { query }: { query: string }) => {
+            return await httpGetNoteByQuery(query);
         },
     },
     Mutation: {
-        addNewNote: (_: any, { title, text, done }: NoteType) => {
-            return httpAddNewNote({ title, text, done });
+        addNewNote: async (_: any, { title, text, done }: NoteType) => {
+            return await httpAddNewNote({ title, text, done });
         },
-        deleteNote: (_: any, { id }: { id: string }) => {
-            return httpDeleteNote(id);
+        deleteNote: async (_: any, { id }: { id: string }) => {
+            return await httpDeleteNote(id);
+        },
+        updateNote: async (
+            _: any,
+            { title, text, done, id }: updateNoteType
+        ) => {
+            return await httpUpdateNote({ title, text, done, id });
         },
     },
 };

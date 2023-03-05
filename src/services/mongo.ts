@@ -18,13 +18,13 @@ mongoose.connection.on('error', (err) => {
     console.error(err);
 });
 
-async function mongoConnect() {
+async function mongoConnect(): Promise<void> {
     await connect(MONGO_URL, mongodbOptions).catch(() => {
         process.exit(-1);
     });
 }
 
-async function mongoDisconnect() {
+async function mongoDisconnect(): Promise<void> {
     await disconnect();
 }
 

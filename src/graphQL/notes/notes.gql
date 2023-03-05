@@ -12,6 +12,6 @@ type Query {
 
 type Mutation {
     addNewNote(title: String!, text: String!, done: Boolean): Note!
-    updateNote(title: String, text: String, done: Boolean, id: ID!): Note!
+    updateNote(title: String!, text: String!, done: Boolean!, id: ID!): Note!
     deleteNote(id: ID!): Note
 }

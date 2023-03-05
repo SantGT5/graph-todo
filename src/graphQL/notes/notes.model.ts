@@ -1,11 +1,12 @@
+import type { NoteType, updateNoteType } from './type.js';
 import { ErrorHandler } from '../ErrorHandler.js';
-import type { NoteType } from '../../models/Notes/schema.js';
 
 import {
     createNewNote,
     dbGetAllNotes,
     deleteNote,
     getNoteByQuery,
+    updateNote,
 } from '../../models/Notes/model.js';
 
 async function httpGetAllNotes() {
@@ -36,5 +37,21 @@ async function httpGetNoteByQuery(query: string) {
     }
 }
 
-export { httpGetAllNotes, httpAddNewNote, httpDeleteNote, httpGetNoteByQuery };
-export type { NoteType };
+async function httpUpdateNote({ title, text, done, id }: updateNoteType) {
+    try {
+        const data = await updateNote({ title, text, done, id });
+
+        return data;
+    } catch (err) {
+        ErrorHandler(err);
+    }
+}
+
+export {
+    httpGetAllNotes,
+    httpAddNewNote,
+    httpDeleteNote,
+    httpGetNoteByQuery,
+    httpUpdateNote,
+};
+export type { NoteType, updateNoteType };

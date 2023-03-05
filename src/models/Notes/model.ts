@@ -1,10 +1,6 @@
 import { Note } from './schema.js';
 
-type createNewNoteType = {
-    title: string;
-    text: string;
-    done?: boolean;
-};
+import type { createNewNoteType, updateNoteType } from './types.js';
 
 async function dbGetAllNotes() {
     return await Note.find({}, { __v: 0 });
@@ -31,4 +27,14 @@ async function getNoteByQuery(query: string) {
     );
 }
 
-export { dbGetAllNotes, createNewNote, deleteNote, getNoteByQuery };
+async function updateNote({ title, text, done, id }: updateNoteType) {
+    const note = { title: title.trim(), text: text.trim(), done };
+
+    return await Note.findByIdAndUpdate(
+        { _id: id },
+        { ...note },
+        { upsert: true, returnDocument: 'after' }
+    );
+}
+
+export { dbGetAllNotes, createNewNote, deleteNote, getNoteByQuery, updateNote };

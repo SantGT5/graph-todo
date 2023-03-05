@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLError } from 'graphql';
 
-function ErrorHandler(err: any) {
+function ErrorHandler(err: any): void {
     if (err.name === 'ValidationError') {
         const errors: { [T: string]: string } = {};
 

@@ -1,11 +1,7 @@
 import { Schema, model } from 'mongoose';
 import type { Document } from 'mongoose';
 
-type NoteType = {
-    title: string;
-    text: string;
-    done: boolean;
-};
+import type { NoteType } from './types';
 
 const notesSchema = new Schema<NoteType>({
     title: {
@@ -26,4 +22,3 @@ const notesSchema = new Schema<NoteType>({
 
 const Note = model<NoteType & Document>('Notes', notesSchema);
 export { Note };
-export type { NoteType };
