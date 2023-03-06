@@ -17,7 +17,8 @@ const app: Express = express();
 
 app.use(
     cors({
-        origin: 'http://localhost:4000',
+        origin: 'http://localhost:5173',
+        optionsSuccessStatus: 200,
     })
 );
 
@@ -37,7 +38,10 @@ async function startApolloServer(
 
     app.use(
         '/graphql',
-        cors<cors.CorsRequest>({ origin: ['http://localhost:4000'] }),
+        cors<cors.CorsRequest>({
+            origin: 'http://localhost:5173',
+            optionsSuccessStatus: 200,
+        }),
         bodyParser.json(),
         expressMiddleware(server)
     );
