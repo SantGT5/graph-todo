@@ -22,12 +22,20 @@ body {
   .border-color {
     border-color: $border-color;
   }
+
+  .text-btn-color {
+    color: $dark-text;
+  }
 }
 
 [data-theme='dark'] {
   background-color: $dark-background;
   .text-color {
     color: $light-text;
+  }
+
+  .text-btn-color {
+    color: $dark-text;
   }
 }
 

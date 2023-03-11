@@ -1,7 +1,10 @@
 import './styles/_main.scss'
+import React from 'react'
 
 // page
 import { HomePage } from './pages'
+
+import { ThemeBtn } from './components'
 
 // redux
 import type { RootState } from './redux/reduxStore'
@@ -15,12 +18,15 @@ export const App = () => {
   )
 
   return (
-    <div data-theme={'light'}>
+    <div data-theme={theme}>
       <div className="page">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        <ThemeBtn />
+        <React.Suspense fallback={<>Loading Page..</>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </React.Suspense>
       </div>
     </div>
   )

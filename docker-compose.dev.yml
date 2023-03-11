@@ -13,8 +13,6 @@ services:
       - api
     volumes:
       - /app/node_modules
-      # "./client" is where our Docker.dev is (folder name)
-      # "./app" is our "WORKDIR"
       - ./client:/app
 
   api:
