@@ -9,7 +9,7 @@
         "pro": "npm run build && node dist/server.js",
         "test": "vitest -w",
         "lint:check": "eslint './src/**/*'",
-        "prettier:format": "prettier --write './src/**/*'",
+        "prettier:fix": "prettier --write './src/**/*'",
         "prettier:check": "prettier --check './src/**/*' --debug-check"
     },
     "keywords": [],

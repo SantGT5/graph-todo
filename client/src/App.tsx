@@ -15,7 +15,7 @@ export const App = () => {
   )
 
   return (
-    <div data-theme={"light"}>
+    <div data-theme={'light'}>
       <div className="page">
         <Routes>
           <Route path="/" element={<HomePage />} />

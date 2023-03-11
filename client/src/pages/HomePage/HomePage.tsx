@@ -26,7 +26,7 @@ export const HomePage = () => {
   const [state, dispatch] = React.useReducer(reducer, '')
 
   return (
-    <div className='wrapper-home-page'>
+    <div className="wrapper-home-page">
       <Input
         value={state}
         onChange={({ currentTarget }) =>
