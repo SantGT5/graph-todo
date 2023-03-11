@@ -1,5 +1,5 @@
-import type { NoteType, updateNoteType } from './type.js';
-import { ErrorHandler } from '../ErrorHandler.js';
+import type { NoteType, updateNoteType } from './type';
+import { ErrorHandler } from '../ErrorHandler';
 
 import {
     createNewNote,
@@ -7,7 +7,7 @@ import {
     deleteNote,
     getNoteByQuery,
     updateNote,
-} from '../../models/Notes/model.js';
+} from '../../models/Notes/model';
 
 async function httpGetAllNotes() {
     return await dbGetAllNotes();

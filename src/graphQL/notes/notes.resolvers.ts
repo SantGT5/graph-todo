@@ -5,9 +5,9 @@ import {
     httpDeleteNote,
     httpGetNoteByQuery,
     httpUpdateNote,
-} from './notes.model.js';
+} from './notes.model';
 
-import type { NoteType, updateNoteType } from './notes.model.js';
+import type { NoteType, updateNoteType } from './notes.model';
 
 const noteResolvers = {
     Query: {

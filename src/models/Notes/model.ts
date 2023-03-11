@@ -1,6 +1,6 @@
-import { Note } from './schema.js';
+import { Note } from './schema';
 
-import type { createNewNoteType, updateNoteType } from './types.js';
+import type { createNewNoteType, updateNoteType } from './types';
 
 async function dbGetAllNotes() {
     return await Note.find({}, { __v: 0 });

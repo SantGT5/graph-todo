@@ -1,9 +1,9 @@
 import type { Server, IncomingMessage, ServerResponse } from 'http';
 
 import http from 'http';
-import { mongoConnect } from './services/mongo.js';
+import { mongoConnect } from './services/mongo';
 
-import { app, startApolloServer } from './app.js';
+import { app, startApolloServer } from './app';
 
 const httpServer: Server<typeof IncomingMessage, typeof ServerResponse> =
     http.createServer(app);

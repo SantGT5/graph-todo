@@ -11,7 +11,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import bodyParser from 'body-parser';
 
-import { resolvers, typeDefs } from './graphQL/makeExecutableSchema.js';
+import { resolvers, typeDefs } from './graphQL/makeExecutableSchema';
 
 const app: Express = express();
 
