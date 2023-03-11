@@ -2,7 +2,7 @@ version: "3.8"
 name: graph-todo_dev
 services:
   api:
-    container_name: api_dev
+    container_name: api
     restart: always
     build:
       context: ./server
@@ -17,6 +17,8 @@ services:
       - mongo-express
     networks:
       - todo-app
+    environment:
+        MONGODB_URL: mongodb://mongo:27017/graphqlTodo_dev
 
   mongo:
     image: mongo:latest

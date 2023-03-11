@@ -5,7 +5,9 @@ const mongodbOptions = {
     useUnifiedTopology: true,
 } as ConnectOptions;
 
-const MONGO_URL = 'mongodb://mongo:27017/graphqlTodo';
+console.log(process.env.MONGODB_URL)
+
+const MONGO_URL = process.env.MONGODB_URL as string;
 
 mongoose.connection.once('open', () => {
     // eslint-disable-next-line no-console
