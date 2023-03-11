@@ -5,8 +5,6 @@ const mongodbOptions = {
     useUnifiedTopology: true,
 } as ConnectOptions;
 
-console.log(process.env.MONGODB_URL)
-
 const MONGO_URL = process.env.MONGODB_URL as string;
 
 mongoose.connection.once('open', () => {
