@@ -1,12 +1,12 @@
 version: "3.8"
-name: graph-todo_pro
+name: graph-todo_dev
 services:
   api:
-    container_name: api_pro
+    container_name: api_dev
     restart: always
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - ./server:/app
