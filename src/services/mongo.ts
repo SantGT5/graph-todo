@@ -1,7 +1,5 @@
 import mongoose, { connect, disconnect, ConnectOptions } from 'mongoose';
 
-import 'dotenv/config';
-
 const mongodbOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
