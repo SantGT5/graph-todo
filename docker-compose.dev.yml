@@ -1,6 +1,22 @@
 version: "3.8"
 name: graph-todo_dev
 services:
+  client:
+    stdin_open: true
+    container_name: client_dev
+    ports:
+      - 5173:5173
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - api
+    volumes:
+      - /app/node_modules
+      # "./client" is where our Docker.dev is (folder name)
+      # "./app" is our "WORKDIR"
+      - ./client:/app
+
   api:
     container_name: api_dev
     restart: always
@@ -18,7 +34,7 @@ services:
     networks:
       - todo-app
     environment:
-        MONGODB_URL: mongodb://mongo:27017/graphqlTodo_dev
+      MONGODB_URL: mongodb://mongo:27017/graphqlTodo_dev
 
   mongo:
     image: mongo:latest

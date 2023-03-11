@@ -1,0 +1,36 @@
+@use '../abstracts/colors' as *;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[data-theme='light'] {
+  background-color: $light-background;
+  .text-color {
+    color: $dark-text;
+  }
+
+  .border-color {
+    border-color: $border-color
+  }
+}
+
+[data-theme='dark'] {
+  background-color: $dark-background;
+  .text-color {
+    color: $light-text;
+  }
+}
+
+.page {
+  height: 100vh;
+}
