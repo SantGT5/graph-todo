@@ -15,17 +15,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Docker Compose Build
-        run: docker-compose -f "../../docker-compose.dev.yml" up -d --build
-
-      - uses: actions/setup-node@v3
+      - name: Install node
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Docker Login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-
+      - name: Docker Compose Build
+        run: docker-compose -f "../../docker-compose.dev.yml" up -d --build
 
       - name: "Wait for docker to finish building"
         run: sleep 30
