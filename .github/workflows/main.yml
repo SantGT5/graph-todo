@@ -12,7 +12,12 @@ jobs:
         node-version: [18.14.2]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker Compose Build
+        run: docker-compose -f "docker-compose.dev.yml" up -d --build
+
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -20,8 +25,7 @@ jobs:
       - name: Docker Login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Docker Compose Build
-        run: docker-compose -f docker-compose.dev.yml up -d
+
 
       - name: "Wait for docker to finish building"
         run: sleep 30
