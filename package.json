@@ -3,6 +3,7 @@
   "scripts": {
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
     "docker:pro": "docker-compose -f docker-compose.yml up --build",
+    "docker:github": "docker-compose -f docker-compose.dev.yml up -d",
     "docker:server:test": "docker exec -it api npm run test:watch",
     "docker:client:test": "docker exec -it client npm run test:watch"
   }

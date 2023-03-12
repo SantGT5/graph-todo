@@ -20,8 +20,11 @@ jobs:
       - name: Docker Login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - run: docker build -t santgt5/client-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true santgt5/client-test npm run test
+      - name: Docker Compose Build
+        run: npm run docker:github
 
-      - run: docker build -t santgt5/server-test -f ./server/Dockerfile.dev ./server
-      - run: docker run -e CI=true santgt5/server-test npm run test
+      - name: Test client
+        run: docker run -e CI=true client npm run test
+
+      - name: "Test server"
+        run: docker run -e CI=true api npm run test
