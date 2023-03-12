@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY ./package.json ./
 COPY ./tsconfig.json ./
+COPY ./tsconfig.node.json ./
 
 RUN npm install
 
@@ -11,6 +12,6 @@ COPY  ./ ./
 
 RUN npm run build
 
-EXPOSE 4000
+EXPOSE 5173
 
-CMD [ "npm", "run", "pro" ]
+CMD [ "npm", "run", "preview" ]

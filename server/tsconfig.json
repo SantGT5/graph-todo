@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "rootDirs": ["server"],
-        "outDir": "dist",
-        "lib": ["es2020"],
+        "outDir": "./dist",
+        "lib": ["es2021"],
         "target": "es2020",
         "module": "CommonJS",
         "moduleResolution": "node",
@@ -11,6 +11,8 @@
         "watch": false,
         "sourceMap": true,
         "strict": true,
+        "skipLibCheck": true
     },
-    "include": ["src"]
+    "include": ["src"],
+    "exclude": ["node_modules"]
 }

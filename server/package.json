@@ -2,12 +2,13 @@
     "name": "graph-todo",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "dist/server.js",
     "scripts": {
         "dev": "nodemon",
         "build": "tsc --b --clean && tsc",
-        "pro": "npm run build && node dist/server.js",
-        "test": "vitest -w",
+        "pro": "node ./dist/server.js",
+        "test": "vitest run",
+        "test:watch": "vitest -w",
         "lint:check": "eslint './src/**/*'",
         "prettier:fix": "prettier --write './src/**/*'",
         "prettier:check": "prettier --check './src/**/*' --debug-check"

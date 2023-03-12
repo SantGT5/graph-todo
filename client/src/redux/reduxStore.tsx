@@ -5,7 +5,7 @@ import { persistReducer, PERSIST } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 // reducers
-import themeSlice from './slices/ThemeMode'
+import themeSlice from './slices/ThemeMode/ThemeMode'
 
 const persistConfig = {
   key: 'root',

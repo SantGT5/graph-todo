@@ -1,0 +1,27 @@
+name: Deploy GraphQl ToDo
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version: [18.14.2]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - run: docker build -t santgt5/client-test -f ./client/Dockerfile.dev ./client
+      - run: docker exec -it santgt5/client-test npm run test
+
+      - run: docker build -t santgt5/server-test -f ./server/Dockerfile.dev ./server
+      - run: docker exec -it santgt5/client-test npm run test

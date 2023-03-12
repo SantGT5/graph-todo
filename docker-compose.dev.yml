@@ -1,9 +1,9 @@
 version: "3.8"
-name: graph-todo_dev
+name: graph-todo
 services:
   client:
     stdin_open: true
-    container_name: client_dev
+    container_name: client
     ports:
       - 5173:5173
     build:
@@ -16,7 +16,7 @@ services:
       - ./client:/app
 
   api:
-    container_name: api_dev
+    container_name: api
     restart: always
     build:
       context: ./server
@@ -32,7 +32,7 @@ services:
     networks:
       - todo-app
     environment:
-      MONGODB_URL: mongodb://mongo:27017/graphqlTodo_dev
+      MONGODB_URL: mongodb://mongo:27017/graphqlTodo
 
   mongo:
     image: mongo:latest
