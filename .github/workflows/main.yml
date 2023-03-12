@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # - name: Docker Login
-      #   run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
       - name: Docker Compose Build
         run: docker compose -f "docker-compose.dev.yml" up -d
 
@@ -41,3 +38,18 @@ jobs:
       - name: Stop containers
         if: always()
         run: docker compose -f "docker-compose.dev.yml" down
+
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build client
+        run: docker build -t santgt5/client-graphql-todo ./client
+
+      - name: Build server
+        run: docker build -t santgt5/server-graphql-todo ./server
+      
+      - name: Push client container
+        run: docker push santgt5/client-graphql-todo
+
+      - name: Push server
+        run: docker push santgt5/server-graphql-todo
