@@ -26,8 +26,15 @@ jobs:
       - name: Docker Compose Build
         run: docker compose -f "docker-compose.dev.yml" up -d --build
 
+      - name: Wait for docker to finish building
+        run: sleep 30
+
       - name: Test client
         run: docker exec -it client npm run test
 
-      - name: "Test server"
+      - name: Test server
         run: docker exec -it api npm run test
+
+      - name: Stop containers
+        if: always()
+        run: docker compose -f "docker-compose.dev.yml" down
