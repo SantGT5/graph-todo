@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.14.2]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -24,16 +24,19 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Docker Compose Build
-        run: docker compose -f "docker-compose.dev.yml" up -d --build
+        run: docker compose -f "docker-compose.dev.yml" up -d
 
       - name: Wait for docker to finish building
         run: sleep 30
 
+      - name: List containers
+        run: docker ps -a
+
       - name: Test client
-        run: docker exec -it client npm run test
+        run: docker run -e CI=true client npm run test
 
       - name: Test server
-        run: docker exec -it api npm run test
+        run: docker run -e CI=true api npm run test
 
       - name: Stop containers
         if: always()
