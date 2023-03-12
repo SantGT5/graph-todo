@@ -33,10 +33,10 @@ jobs:
         run: docker ps -a
 
       - name: Test client
-        run: docker run -e CI=true client npm run test
+        run: docker run -e CI=true santgt5/client npm run test
 
       - name: Test server
-        run: docker run -e CI=true api npm run test
+        run: docker run -e CI=true santgt5/api npm run test
 
       - name: Stop containers
         if: always()
