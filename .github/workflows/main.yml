@@ -33,10 +33,10 @@ jobs:
         run: docker ps -a
 
       - name: Test client
-        run: docker exec -it client npm run test --skip-auth
+        run: docker exec client npm run test --skip-auth
 
       - name: Test server
-        run: docker exec -it api npm run test  --skip-auth
+        run: docker exec api npm run test  --skip-auth
 
       - name: Stop containers
         if: always()
