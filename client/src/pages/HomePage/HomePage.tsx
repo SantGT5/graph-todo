@@ -1,29 +1,46 @@
 import './HomePage.style.scss'
 import React from 'react'
 
-import { Input } from '../../components'
+// components
+import { Input, InputCheckBox } from '../../components'
 
-type ReducerActionType = { type: string; payload: string }
+// type
+import { initInputState } from './type'
+import type { inputStateType, inputActionType } from './type'
 
-const reducer = (state = '', { type, payload }: ReducerActionType): string => {
-  switch (type) {
-    case 'ON_CHANGE':
-      return payload
-
-    default:
-      return state
-  }
-}
+const formHandler = (state: inputStateType, newState: inputActionType) => ({
+  ...state,
+  ...newState,
+})
 
 export const HomePage = () => {
-  const [state, dispatch] = React.useReducer(reducer, '')
+  const [input, dispatch] = React.useReducer(formHandler, initInputState)
+
+  const handleChangeValue = (event: React.SyntheticEvent) => {
+    const { name, value } = event.target as HTMLInputElement
+
+    dispatch({ [name]: value })
+  }
 
   return (
     <div className="wrapper-home-page">
       <Input
-        value={state}
+        placeholder="Title .."
+        value={input.title}
+        name="title"
+        onChange={handleChangeValue}
+      />
+      <Input
+        placeholder="Description .."
+        value={input.text}
+        name="text"
+        onChange={handleChangeValue}
+      />
+      <InputCheckBox
+        name="done"
+        checked={input.done}
         onChange={({ currentTarget }) =>
-          dispatch({ type: 'ON_CHANGE', payload: currentTarget.value })
+          dispatch({ [currentTarget.name]: currentTarget.checked })
         }
       />
     </div>
