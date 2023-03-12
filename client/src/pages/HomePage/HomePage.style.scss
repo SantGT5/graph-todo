@@ -1,4 +1,15 @@
 .wrapper-home-page {
   display: flex;
   flex-direction: column;
+
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .note-card {
+      border: 2px solid red;
+      width: 200px;
+    }
+  }
 }
