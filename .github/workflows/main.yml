@@ -23,6 +23,9 @@ jobs:
       - name: Docker Compose Build
         run: docker-compose -f docker-compose.dev.yml up -d
 
+      - name: "Wait for docker to finish building"
+        run: sleep 30
+
       - name: Test client
         run: docker run -e CI=true client npm run test
 
