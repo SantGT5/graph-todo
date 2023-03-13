@@ -43,11 +43,11 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build client
-        run: docker build -t santgt5/client-graphql-todo ./client
+        run: docker buildx build --platform linux/arm64/v8 -t santgt5/client-graphql-todo ./client
 
       - name: Build server
-        run: docker build -t santgt5/server-graphql-todo ./server
-      
+        run: docker buildx build --platform linux/arm64/v8 -t santgt5/server-graphql-todo ./server
+
       - name: Push client container
         run: docker push santgt5/client-graphql-todo
 

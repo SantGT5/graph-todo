@@ -17,9 +17,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 async function mongoConnect(): Promise<void> {
-    await connect(MONGO_URL, mongodbOptions).catch(() => {
-        process.exit(-1);
-    });
+    await connect(MONGO_URL, mongodbOptions);
 }
 
 async function mongoDisconnect(): Promise<void> {

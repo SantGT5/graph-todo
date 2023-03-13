@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "nodemon",
         "build": "tsc --b --clean && tsc",
-        "pro": "node ./dist/server.js",
+        "pro": "node dist/server.js",
         "test": "vitest run",
         "test:watch": "vitest -w",
         "lint:check": "eslint './src/**/*'",
