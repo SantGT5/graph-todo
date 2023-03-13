@@ -4,10 +4,9 @@ services:
   client:
     container_name: client
     image: santgt5/client-graphql-todo
-    ports:
-      - 5173:5173
-  server:
+
+  api:
     container_name: api
     image: santgt5/server-graphql-todo
-    ports:
-      - 4000:4000
+    environment:
+      MONGODB_URL: mongodb://mongo:27017/graphqlTodo
