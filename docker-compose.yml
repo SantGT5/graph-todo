@@ -4,9 +4,14 @@ services:
   client:
     container_name: client
     image: santgt5/client-graphql-todo
+    ports:
+      - 5173:5173
 
   api:
     container_name: api
+    restart: always
     image: santgt5/server-graphql-todo
     environment:
-      MONGODB_URL: mongodb://mongo:27017/graphqlTodo
+      - MONGODB_URL=$MONGODB_URL # MongoDB Access
+    ports:
+      - 4000:4000

@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker images Client
+      - name: Build and push Docker Client images
         uses: docker/build-push-action@v4.0.0
         with:
           context: ./client
@@ -61,7 +61,7 @@ jobs:
           push: true
           tags: santgt5/client-graphql-todo
 
-      - name: Build and push Docker images Server
+      - name: Build and push Docker Server images
         uses: docker/build-push-action@v4.0.0
         with:
           context: ./server
