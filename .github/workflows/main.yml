@@ -32,14 +32,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker images
+      - name: Build and push Docker images Client
         uses: docker/build-push-action@v4.0.0
         with:
           context: ./client
           platforms: linux/arm64/v8
           push: true
           tags: santgt5/client-graphql-todo
-          
+
+      - name: Build and push Docker images Server
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./server
+          platforms: linux/arm64/v8
+          push: true
+          tags: santgt5/server-graphql-todo
+
+
       # - name: Docker Compose Build
       #   run: docker compose -f "docker-compose.dev.yml" up -d
 
