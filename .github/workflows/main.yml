@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v4.0.0
         with:
           context: ./client
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/arm64/v8
           push: true
           tags: santgt5/client-graphql-todo
           
