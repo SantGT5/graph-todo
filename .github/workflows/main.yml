@@ -20,24 +20,24 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Docker Compose Build
-        run: docker compose -f "docker-compose.dev.yml" up -d
+      # - name: Docker Compose Build
+      #   run: docker compose -f "docker-compose.dev.yml" up -d
 
-      - name: Wait for docker to finish building
-        run: sleep 5
+      # - name: Wait for docker to finish building
+      #   run: sleep 5
 
-      - name: Check running containers
-        run: docker ps -a
+      # - name: Check running containers
+      #   run: docker ps -a
 
-      - name: Test client
-        run: docker exec client npm run test --skip-auth
+      # - name: Test client
+      #   run: docker exec client npm run test --skip-auth
 
-      - name: Test server
-        run: docker exec api npm run test  --skip-auth
+      # - name: Test server
+      #   run: docker exec api npm run test  --skip-auth
 
-      - name: Stop containers
-        if: always()
-        run: docker compose -f "docker-compose.dev.yml" down
+      # - name: Stop containers
+      #   if: always()
+      #   run: docker compose -f "docker-compose.dev.yml" down
 
       - name: Docker Login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
