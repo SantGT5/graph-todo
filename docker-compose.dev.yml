@@ -45,17 +45,26 @@ services:
     volumes:
       - mongo-data:/data/db
     command: mongod --quiet --logpath /dev/null
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb://mongo:27017 --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
 
   mongo-express:
     image: mongo-express:latest
     container_name: mongo-express
     restart: always
+    depends_on:
+      mongo:
+        condition: service_healthy
     ports:
       - 8081:8081
-    depends_on:
-      - mongo
     networks:
       - todo-app
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
 
 networks:
   todo-app:

@@ -17,8 +17,6 @@ mongoose.connection.on('error', (err) => {
 });
 
 async function mongoConnect(): Promise<void> {
-    // eslint-disable-next-line no-console
-    console.log(MONGO_URL);
     await connect(MONGO_URL, mongodbOptions);
 }
 
