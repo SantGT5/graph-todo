@@ -33,11 +33,11 @@ jobs:
       - name: Test client
         run: docker exec client npm run test
 
-      - name: Test server
+      - name: Check Eslint server
         run: docker exec api npm run test
 
       - name: Eslint server
-        run: docker exec client npm run lint:check
+        run: docker exec api npm run lint:check
 
       - name: Stop containers
         if: always()

@@ -42,8 +42,8 @@ jobs:
       - name: Test server
         run: docker exec api npm run test
 
-      - name: Eslint server
-        run: docker exec client npm run lint:check
+      - name: Check Eslint server
+        run: docker exec api npm run test
 
       - name: Stop containers
         if: always()
