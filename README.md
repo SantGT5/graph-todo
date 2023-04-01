@@ -29,7 +29,7 @@
 $ git clone https://github.com/SantGT5/graph-todo.git
 $ cd graph-todo
 
---- install dependecies is not requered to run project ---
+--- install dependencies is not required to run project ---
 $ cd client
 $ npm install
 
@@ -48,7 +48,7 @@ After run project, the following success message appears in the terminal:
 
 ## Routers
 
-Having project running, you can visite the following routers:
+Having project running, you can visit the following routers:
 
 - **Client**: http://localhost:3050/
 
@@ -65,4 +65,4 @@ Having project running, you can visite the following routers:
 
 -  **`$ npm run docker:server:test`** run server test 
 
-- **`$ npm run docker:client:test`** run client testv
+- **`$ npm run docker:client:test`** run client test
