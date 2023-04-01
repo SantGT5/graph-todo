@@ -14,4 +14,4 @@ services:
     environment:
       - MONGODB_URL=$MONGODB_URL # MongoDB Access
     ports:
-      - 4000:4000
+      - 4000:4000 # Apollo

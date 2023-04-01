@@ -20,6 +20,9 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 5173,
+    hmr: {
+      clientPort: 5173,
+    }
   },
   preview: {
     port: 5173,

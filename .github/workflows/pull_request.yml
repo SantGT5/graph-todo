@@ -30,13 +30,13 @@ jobs:
       - name: Check running containers
         run: docker ps -a
 
-      - name: Test client
+      - name: Unit Test client
         run: docker exec client npm run test
 
-      - name: Check Eslint server
+      - name: Unit Test server
         run: docker exec api npm run test
 
-      - name: Eslint server
+      - name: Check Eslint server
         run: docker exec api npm run lint:check
 
       - name: Stop containers

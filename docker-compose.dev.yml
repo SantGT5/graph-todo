@@ -1,6 +1,19 @@
 version: "3.8"
 name: graph-todo
 services:
+  nginx:
+    restart: always
+    depends_on:
+      - client
+      - api
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3050:80
+    networks:
+      - todo-app
+
   client:
     stdin_open: true
     container_name: client
@@ -14,6 +27,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    networks:
+      - todo-app
 
   api:
     container_name: api

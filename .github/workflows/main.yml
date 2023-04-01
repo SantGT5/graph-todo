@@ -36,10 +36,10 @@ jobs:
       - name: Check running containers
         run: docker ps -a
 
-      - name: Test client
+      - name: Unit Test client
         run: docker exec client npm run test
 
-      - name: Test server
+      - name: Unit Test server
         run: docker exec api npm run test
 
       - name: Check Eslint server
@@ -71,3 +71,11 @@ jobs:
           platforms: linux/arm64/v8
           push: true
           tags: santgt5/server-graphql-todo
+
+      - name: Build and push Nginx images
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./nginx
+          platforms: linux/arm64/v8
+          push: true
+          tags: santgt5/nginx-graphql-todo
