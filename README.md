@@ -5,7 +5,7 @@
 <img width="827" alt="Screenshot 2023-04-01 at 17 25 59" src="https://user-images.githubusercontent.com/83282533/229298315-c8f8f79b-9cb5-4770-afaa-c79d65dfcd13.png">
 
 ### Motivation
-> Learn how to design and develop large-scale systems
+> Learn how to design and develop large-scale systems   
 > Learn new knowledge and code skills
 
 ## Installation
