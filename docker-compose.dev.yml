@@ -18,8 +18,6 @@ services:
   client:
     stdin_open: true
     container_name: client
-    ports:
-      - 5173:5173
     build:
       context: ./client
       dockerfile: Dockerfile.dev
@@ -30,6 +28,8 @@ services:
       - ./client:/app
     networks:
       - todo-app
+    environment:
+      - WDS_SOCKET_PORT=0
 
   api:
     container_name: api
@@ -40,8 +40,6 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    ports:
-      - 4000:4000
     depends_on:
       - mongo
       - mongo-express
@@ -54,8 +52,6 @@ services:
     image: mongo:latest
     container_name: mongo
     restart: always
-    ports:
-      - 27017:27017
     networks:
       - todo-app
     volumes:
@@ -75,12 +71,11 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
-    ports:
-      - 8081:8081
     networks:
       - todo-app
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_SITE_BASEURL: /mongoadmin
 
 networks:
   todo-app:

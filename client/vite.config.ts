@@ -22,7 +22,8 @@ export default defineConfig({
     port: 5173,
     hmr: {
       clientPort: 5173,
-    }
+      host: '172.22.0.5',
+    },
   },
   preview: {
     port: 5173,
