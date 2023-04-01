@@ -8,15 +8,14 @@
 > Learn how to design and develop large-scale systems   
 > Learn new knowledge and code skills
 
-## Installation
+## Be sure you have installed
 
-#### Be sure you have installed
 - [NodeJs](https://nodejs.org/en/)
 - [Docker](https://www.docker.com/)
 - [Npm](https://docs.npmjs.com/)
 - [Git](https://git-scm.com/)
 
-#### Start project
+## Start project
 
 > **_IMPORTANT:_**  
 > Be sure the following ports are available:   
