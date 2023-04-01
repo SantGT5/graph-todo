@@ -19,12 +19,12 @@
 #### Start project
 
 > **_IMPORTANT:_**  
-> Be sure the following ports are available:  
-> -- 3050  
-> -- 5173  
-> -- 4000  
-> -- 27017  
-> -- 8081  
+> Be sure the following ports are available:   
+> -- 3050   
+> -- 5173   
+> -- 4000   
+> -- 27017   
+> -- 8081   
 
 ```
 $ git clone https://github.com/SantGT5/graph-todo.git
