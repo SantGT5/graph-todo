@@ -1,7 +1,11 @@
 package-lock.json
 node_modules
-
+README.md
 nodemon.json
 
 Dockerfile
 Dockerfile.dev
+
+.git
+.DS_Store
+.gitignore

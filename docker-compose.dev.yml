@@ -2,6 +2,7 @@ version: "3.8"
 name: graph-todo
 services:
   nginx:
+    container_name: nginx
     restart: always
     depends_on:
       - client
