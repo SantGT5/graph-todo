@@ -2,7 +2,7 @@
 
 ## Architecture diagram
 
-<img width="827" alt="Screenshot 2023-04-01 at 17 25 59" src="https://user-images.githubusercontent.com/83282533/229298315-c8f8f79b-9cb5-4770-afaa-c79d65dfcd13.png">
+<img width="825" alt="Screenshot 2023-04-03 at 01 30 55" src="https://user-images.githubusercontent.com/83282533/229384853-7eeb9c60-c8f7-497c-9814-d848d52821cf.png">
 
 ### Motivation
 
