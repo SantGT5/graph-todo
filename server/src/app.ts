@@ -23,7 +23,10 @@ app.use(
     })
 );
 
-app.use(helmet());
+app.use(
+    helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false })
+);
+
 app.use(express.json());
 
 async function startApolloServer(
