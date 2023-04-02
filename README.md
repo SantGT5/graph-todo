@@ -55,7 +55,7 @@ Having project running, you can visit the following routers:
 
 - **Apollo Server**: http://localhost:3050/graphql
 
-- **Mongo-Express**: http://localhost:8081
+- **Mongo-Express**: http://localhost:3050/mongoadmin
 
 ## Available Scripts
 
