@@ -10,6 +10,7 @@ import helmet from 'helmet';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+// import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 import bodyParser from 'body-parser';
 
 import { resolvers, typeDefs } from './graphQL/makeExecutableSchema';
@@ -35,7 +36,10 @@ async function startApolloServer(
     const server: ApolloServer<BaseContext> = new ApolloServer({
         typeDefs,
         resolvers,
-        plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+        plugins: [
+            ApolloServerPluginDrainHttpServer({ httpServer }),
+            // ApolloServerPluginLandingPageDisabled(),
+        ],
         includeStacktraceInErrorResponses: false,
     });
 
