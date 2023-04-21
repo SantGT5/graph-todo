@@ -1,6 +1,3 @@
 build:
   docker:
-    client: client/Dockerfile
-    proxy: nginx/Dockerfile
-run:
-  proxy: docker run -d -p 3050:80 proxy
+    compose: docker-compose.yml
