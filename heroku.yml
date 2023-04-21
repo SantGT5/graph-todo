@@ -1,4 +1,5 @@
 build:
   docker:
-    client: client/Dockerfile
-    nginx: nginx/Dockerfile
+    client: docker-compose.yml
+run:
+  client: docker-compose up
