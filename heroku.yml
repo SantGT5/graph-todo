@@ -3,4 +3,4 @@ build:
     client: client/Dockerfile
     proxy: nginx/Dockerfile
 run:
-  proxy: docker run -d -p $PORT:80 proxy
+  proxy: docker run -d -p 3050:80 proxy
