@@ -1,12 +1,14 @@
-version: "3"
 services:
-  client:
+  - type: web
+    name: client
     image: santgt5/client-graphql-todo
     env:
       - WDS_SOCKET_PORT=0
-  nginx:
+
+  - type: web
+    name: nginx
     build:
-      context: ./nginx
+      dockerfilePath: ./nginx
       dockerfile: Dockerfile
     ports:
       - 3050:80
