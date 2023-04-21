@@ -1,17 +1,85 @@
 version: "3.8"
-name: graph-todo_pro
+name: graph-todo
 services:
-  client:
-    container_name: client
-    image: santgt5/client-graphql-todo
+  nginx:
+    container_name: nginx
+    restart: always
+    depends_on:
+      - client
+      - api
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
     ports:
-      - 5173:5173
+      - 3050:80
+    networks:
+      - todo-app
+
+  client:
+    stdin_open: true
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - api
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    networks:
+      - todo-app
+    environment:
+      - WDS_SOCKET_PORT=0
 
   api:
     container_name: api
     restart: always
-    image: santgt5/server-graphql-todo
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    depends_on:
+      - mongo
+      - mongo-express
+    networks:
+      - todo-app
     environment:
-      - MONGODB_URL=$MONGODB_URL # MongoDB Access
-    ports:
-      - 4000:4000 # Apollo
+      MONGODB_URL: mongodb://mongo:27017/graphqlTodo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    networks:
+      - todo-app
+    volumes:
+      - mongo-data:/data/db
+    command: mongod --quiet --logpath /dev/null
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb://mongo:27017 --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - todo-app
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_SITE_BASEURL: /mongoadmin
+
+networks:
+  todo-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local

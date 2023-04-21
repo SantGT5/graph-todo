@@ -28,7 +28,7 @@ jobs:
 
         ########### Test ###########
       - name: Docker Compose Build
-        run: docker compose -f "docker-compose.dev.yml" up -d
+        run: docker compose up -d
 
       - name: Wait for docker to finish building
         run: sleep 5
@@ -47,7 +47,7 @@ jobs:
 
       - name: Stop containers
         if: always()
-        run: docker compose -f "docker-compose.dev.yml" down
+        run: docker compose down
 
         ########### Deploy ###########
       - name: Login to Docker Hub
