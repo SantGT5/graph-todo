@@ -2,6 +2,7 @@
   "name": "docker_compose_controller",
   "scripts": {
     "docker:dev": "docker-compose up --build",
+    "start": "docker-compose up --build",
     "docker:server:test": "docker exec -it api npm run test:watch",
     "docker:client:test": "docker exec -it client npm run test:watch"
   }
