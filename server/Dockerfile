@@ -1,5 +1,7 @@
 FROM node:18.14.2-alpine
 
+LABEL version="1.0"
+
 WORKDIR /app
 
 COPY ./package.json ./

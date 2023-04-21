@@ -2,6 +2,8 @@ FROM node:18.14.2-alpine
 
 WORKDIR /app
 
+LABEL version="1.0"
+
 COPY ./package.json ./
 COPY ./tsconfig.json ./
 COPY ./tsconfig.node.json ./
