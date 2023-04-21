@@ -1,5 +1,6 @@
 build:
   docker:
-    client: docker-compose.yml
+    client: client/Dockerfile
+    proxy: nginx/Dockerfile
 run:
-  client: docker compose up
+  proxy: docker run -d -p $PORT:80 proxy
