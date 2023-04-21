@@ -1,4 +1,9 @@
 services:
+  app:
+    image: santgt5/client-graphql-todo
+    env:
+      - WDS_SOCKET_PORT=0
+
   nginx:
     build:
       context: ./nginx
@@ -6,9 +11,4 @@ services:
     ports:
       - 3050:80
     depends_on:
-      - app
-
-  client:
-    image: santgt5/client-graphql-todo
-    env:
-      - WDS_SOCKET_PORT=0
+      - client
