@@ -5,8 +5,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3050:80
+    depends_on:
+      - app
+
   client:
-  app:
     image: santgt5/client-graphql-todo
     env:
       - WDS_SOCKET_PORT=0
