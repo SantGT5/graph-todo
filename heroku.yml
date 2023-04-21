@@ -1,3 +1,8 @@
 build:
   docker:
-    compose: docker-compose.yml
+    compose:
+      - docker-compose.yml
+run:
+  web:
+    image: docker/compose:1.29.0
+    command: docker-compose up
