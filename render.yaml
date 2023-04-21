@@ -1,5 +1,5 @@
 services:
-  app:
+  client:
     image: santgt5/client-graphql-todo
     env:
       - WDS_SOCKET_PORT=0
