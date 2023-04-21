@@ -1,7 +1,17 @@
 services:
   - type: web
     name: client
+    env: static
+    plan: standard
+    buildCommand: npm run build
+    startCommand: npm run preview
+    dockerfilePath: client/Dockerfile
+    repo: https://github.com/SantGT5/graph-todo.git
+    branch: main
+
+  - type: web
+    name: nginx
     env: docker
     plan: standard
     healthCheckPath: /health
-    dockerfilePath: client/Dockerfile
+    dockerfilePath: nginx/Dockerfile
