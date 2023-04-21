@@ -1,0 +1,12 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 3050:80
+  client:
+  app:
+    image: santgt5/client-graphql-todo
+    env:
+      - WDS_SOCKET_PORT=0
