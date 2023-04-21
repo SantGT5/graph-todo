@@ -26,6 +26,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    ports:
+      - 5173:5173
     networks:
       - todo-app
     environment:
