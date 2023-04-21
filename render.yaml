@@ -2,11 +2,13 @@ services:
   - type: web
     name: client
     env: docker
+    plan: standard
     healthCheckPath: /health
     dockerfilePath: client/Dockerfile
 
   - type: web
     name: nginx
     env: docker
+    plan: standard
     healthCheckPath: /health
     dockerfilePath: nginx/Dockerfile
