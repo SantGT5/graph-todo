@@ -2,4 +2,4 @@ build:
   docker:
     client: docker-compose.yml
 run:
-  client: docker-compose up
+  client: docker compose up
